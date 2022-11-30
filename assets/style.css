@@ -38,6 +38,10 @@ header {
     padding: 8px;
 }
 
+.hide {
+    display: none;
+}
+
 #history-list {
     margin: 0;
     padding: 0;
