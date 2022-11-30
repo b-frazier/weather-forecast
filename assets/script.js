@@ -5,6 +5,7 @@ let forecast = document.getElementById('forecast');
 let searchHistory = document.getElementById('search-history');
 
 searchBtn.addEventListener('click', function(){
-    console.log('click');
+    const city = searchBar.value;
+    console.log(city);
 });
 
