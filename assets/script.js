@@ -6,7 +6,7 @@ let searchHistory = document.getElementById('search-history');
 
 
 
-searchBtn.addEventListener('click', function(){
+/* searchBtn.addEventListener('click', function(){
     let city = searchBar.value;
     console.log(city);
 
@@ -27,8 +27,40 @@ searchBtn.addEventListener('click', function(){
 
     getWeather();
 });
+*/
+
+// let lat = '39.201439';
+// let lon = '-85.921379';
+let key = '567de4c5feb717e35af6cd339ab5f2d9';
+let city = 'columbus';
+
+function cityLocation(){
+    fetch('http://api.openweathermap.org/geo/1.0/direct?q='+ city +'&limit=2&appid='+ key)
+    .then(response => response.json())
+    .then (data => console.log(data))
+    // .then(response => response.json())
+    // .then(function(data){
+    //     let lat = data[0].lat;
+    //     let lon = data[0].lon;
+    //     let cityName = data[0].name;
+    // })
+    // .catch(console.error());
+};
+cityLocation();
 
 
+/* function callApi(){
+    fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key)
+    // fetch('http://api.openweathermap.org/data/2.5/forecast?lat=39.201439&lon=-85.921379&appid=567de4c5feb717e35af6cd339ab5f2d9')
+    .then(response => response.json())
+    .then(weatherData)
+    .catch(console.error());
+};
+function weatherData(data){
+    for (let i = 0; i < data.length; i++){
+        forecast.textContent = JSON.stringify(data[i], null, 2)
+    }
+};
 
-
-
+callApi();
+*/
