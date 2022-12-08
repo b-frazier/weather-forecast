@@ -58,7 +58,7 @@ function getCityLocation(city) {
                     
                     let dailyHtml = `
                 <div class="card-body">
-                  <h5 class="card-title">${dailyData.weather[0].main} <span></span></h5>
+                  <h5 class="card-title">${dailyData.weather[0].main}<span>${dailyData.weather[0].icon}</span></h5>
                   <h6>${dailyData.weather[0].description}</h6>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -93,30 +93,22 @@ function getCurrentWeather(city){
             console.log(currentTemp)
             console.log(currentHumid)
             console.log(currentWind)
-           /* for (let i = 0; i < current.list.length; i++){
-                let todayWeather = current.list[0];
-                console.log(todayWeather)
-                if (todayWeather){
-                    let newDiv = document.createElement('div');
-                    newDiv.classList.add('card');
 
-                    let currentHtml = `
-                    <div class="card-body">
-                        <h2>${current.city.name}</h2>
-                        <p>Sunrise: ${current.city.sunrise}</p>
-                        <p>Sunset: ${current.city.sunset}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Temp: ${todayWeather.main.temp} degrees</li>
-                        <li class="list-group-item">Humidity: ${todayWeather.main.humiidty}%</li>
-                        <li class="list-group-item">Wind: ${todayWeather.wind.speed} mph</li>
-                    </ul>
-                    `
-                    newDiv.innerHTML = currentHtml;
-                    currentForecast.appendChild(newDiv);
-                    
-                }
-            } */
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('card');
+
+            let currentHtml = `
+            <div class="card-body">
+                <h2>${current.city.name}</h2>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Temp: ${currentTemp} degrees</li>
+                <li class="list-group-item">Humidity: ${currentHumid}%</li>
+                <li class="list-group-item">Wind: ${currentWind} mph</li>
+            </ul>
+            `
+            newDiv.innerHTML = currentHtml;
+            currentForecast.appendChild(newDiv);
         })
 };
 
