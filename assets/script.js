@@ -44,6 +44,8 @@ function getCityLocation(city) {
                     divContainer.classList.add('card');
                     divContainer.style.width = '18rem';
 
+                    let icon = dailyData.weather[0].icon
+
                     // let nameh4 = document.createElement('h4')
                     // let tempP = document.createElement('p')
                     // let humidP = document.createElement('p')
@@ -58,7 +60,7 @@ function getCityLocation(city) {
                     
                     let dailyHtml = `
                 <div class="card-body">
-                  <h5 class="card-title">${dailyData.weather[0].main}<span>${dailyData.weather[0].icon}</span></h5>
+                  <h5 class="card-title">${dailyData.weather[0].main}<span><img src="assets/icons/${icon}.png" style="width: 25px; margin-left: 8px; margin-bottom: 8px"></span></h5>
                   <h6>${dailyData.weather[0].description}</h6>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -94,12 +96,18 @@ function getCurrentWeather(city){
             console.log(currentHumid)
             console.log(currentWind)
 
+            let icon = current.list[0].weather[0].icon;
+            let main = current.list[0].weather[0].main;
+            let description = current.list[0].weather[0].description;
+
             let newDiv = document.createElement('div');
             newDiv.classList.add('card');
 
             let currentHtml = `
             <div class="card-body">
                 <h2>${current.city.name}</h2>
+                <h5 class="card-title">${main}<span><img src="assets/icons/${icon}.png" style="width: 25px; margin-left: 8px; margin-bottom: 8px"></span></h5>
+                  <h6>${description}</h6>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Temp: ${currentTemp} degrees</li>
