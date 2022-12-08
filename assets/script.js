@@ -7,11 +7,6 @@ let currentForecast = document.getElementById('current-forecast');
 let key = '567de4c5feb717e35af6cd339ab5f2d9';
 let lat = null;
 let lon = null;
-/* 
-let hour = dayjs().hour();
-let newHour = hour + ':00:00';
-console.log(newHour)
-*/
 
 // searchBar.value
 
@@ -19,8 +14,6 @@ searchBtn.addEventListener('click', function() {
     getCityLocation('columbus');
     getCurrentWeather('columbus');
 });
-
-
 
 // converts city name to coordinates then gets weather data
 function getCityLocation(city) {
@@ -45,18 +38,6 @@ function getCityLocation(city) {
                     divContainer.style.width = '18rem';
 
                     let icon = dailyData.weather[0].icon
-
-                    // let nameh4 = document.createElement('h4')
-                    // let tempP = document.createElement('p')
-                    // let humidP = document.createElement('p')
-
-                    // nameh4.textContent = forecast.city.name;
-                    // tempP.textContent = "Temp: " + dailyData.main.temp
-                    // humidP.textContent = dailyData.main.humidity
-
-                    // divContainer.appendChild(nameh4)
-                    // divContainer.appendChild(tempP)
-                    // divContainer.appendChild(humidP)
                     
                     let dailyHtml = `
                 <div class="card-body">
@@ -128,12 +109,3 @@ function getWeather(lat, lon) {
 function findCurrentWeather(lat, lon) {
     return fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
 };
-
-
-
-/* function weatherData(data){
-    for (let i = 0; i < data.length; i++){
-        forecast.textContent = JSON.stringify(data[i], null, 2)
-    }
-};
-*/
