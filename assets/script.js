@@ -8,7 +8,7 @@ let key = '567de4c5feb717e35af6cd339ab5f2d9';
 let lat = null;
 let lon = null;
 
-searchBtn.addEventListener('click', function() {
+searchBtn.addEventListener('click', function () {
     getCityLocation(searchBar.value);
     getCurrentWeather(searchBar.value);
     saveSearch(searchBar.value);
@@ -26,7 +26,7 @@ function getCityLocation(city) {
         .then(response => response.json())
         .then(forecast => {
             console.log(forecast)
-// forecast names the output, then we use forecast to access the data
+            // forecast names the output, then we use forecast to access the data
             for (let i = 0; i < forecast.list.length; i++) {
                 if (forecast.list[i].dt_txt.includes('12:00:00')) {
                     let dailyData = forecast.list[i];
@@ -37,7 +37,7 @@ function getCityLocation(city) {
                     divContainer.style.width = '18rem';
 
                     let icon = dailyData.weather[0].icon
-                    
+
                     let dailyHtml = `
                 <div class="card-body">
                   <h5 class="card-title">${dailyData.weather[0].main}<span><img src="assets/icons/${icon}.png" style="width: 25px; margin-left: 8px; margin-bottom: 8px"></span></h5>
@@ -58,7 +58,7 @@ function getCityLocation(city) {
 };
 
 
-function getCurrentWeather(city){
+function getCurrentWeather(city) {
     fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=2&appid=' + key)
         .then(response => response.json())
         .then(data => {
@@ -105,9 +105,9 @@ function findCurrentWeather(lat, lon) {
     return fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
 };
 
-function saveSearch(city){
+function saveSearch(city) {
     let citySearch = JSON.parse(localStorage.getItem('cities'))
-    if (!citySearch){
+    if (!citySearch) {
         citySearch = []
     }
     citySearch.push(city)
@@ -115,15 +115,15 @@ function saveSearch(city){
     showHistory();
 };
 
-function showHistory(){
+function showHistory() {
     let citySearch = JSON.parse(localStorage.getItem('cities'))
-    if (citySearch != null){
+    if (citySearch != null) {
         citySearch = citySearch.reverse()
-        if (citySearch.length > 5){
-            citySearch = citySearch.slice(0,5)
+        if (citySearch.length > 5) {
+            citySearch = citySearch.slice(0, 5)
         }
         let printSearch = '';
-        citySearch.forEach(function (city){
+        citySearch.forEach(function (city) {
             printSearch += `<li><button class="historyBtn" onclick="resetWeather('${city}')">${city}</button></li>`
         })
         searchHistory.classList.remove('hide');
@@ -131,7 +131,7 @@ function showHistory(){
     }
 };
 
-function resetWeather(e){
+function resetWeather(e) {
     searchBar.value = e;
     getCityLocation(searchBar.value);
     getCurrentWeather(searchBar.value);
