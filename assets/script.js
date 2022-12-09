@@ -8,8 +8,6 @@ let key = '567de4c5feb717e35af6cd339ab5f2d9';
 let lat = null;
 let lon = null;
 
-showHistory();
-
 searchBtn.addEventListener('click', function() {
     getCityLocation(searchBar.value);
     getCurrentWeather(searchBar.value);
@@ -74,9 +72,6 @@ function getCurrentWeather(city){
             let currentTemp = current.list[0].main.temp;
             let currentHumid = current.list[0].main.humidity;
             let currentWind = current.list[0].wind.speed;
-            console.log(currentTemp)
-            console.log(currentHumid)
-            console.log(currentWind)
 
             let icon = current.list[0].weather[0].icon;
             let main = current.list[0].weather[0].main;
@@ -128,10 +123,18 @@ function showHistory(){
             citySearch = citySearch.slice(0,5)
         }
         let printSearch = '';
-        citySearch.forEach((city)=>{
-            printSearch += `<li><button>${city}</button></li>`
+        citySearch.forEach(function (city){
+            printSearch += `<li><button onclick="resetWeather('${city}')">${city}</button></li>`
         })
         searchHistory.classList.remove('hide');
         historyUl.innerHTML = printSearch;
     }
-}
+};
+
+function resetWeather(e){
+    searchBar.value = e;
+    getCityLocation(searchBar.value);
+    getCurrentWeather(searchBar.value);
+};
+
+showHistory();
