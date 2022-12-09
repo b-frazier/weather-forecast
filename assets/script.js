@@ -8,11 +8,12 @@ let key = '567de4c5feb717e35af6cd339ab5f2d9';
 let lat = null;
 let lon = null;
 
-// searchBar.value
+showHistory();
 
 searchBtn.addEventListener('click', function() {
-    getCityLocation('columbus');
-    getCurrentWeather('columbus');
+    getCityLocation(searchBar.value);
+    getCurrentWeather(searchBar.value);
+    saveSearch(searchBar.value);
 });
 
 // converts city name to coordinates then gets weather data
@@ -101,7 +102,6 @@ function getCurrentWeather(city){
         })
 };
 
-
 // take coordinates, output weather
 function getWeather(lat, lon) {
     return fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
@@ -109,3 +109,29 @@ function getWeather(lat, lon) {
 function findCurrentWeather(lat, lon) {
     return fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
 };
+
+function saveSearch(city){
+    let citySearch = JSON.parse(localStorage.getItem('cities'))
+    if (!citySearch){
+        citySearch = []
+    }
+    citySearch.push(city)
+    localStorage.setItem('cities', JSON.stringify(citySearch));
+    showHistory();
+};
+
+function showHistory(){
+    let citySearch = JSON.parse(localStorage.getItem('cities'))
+    if (citySearch != null){
+        citySearch = citySearch.reverse()
+        if (citySearch.length > 5){
+            citySearch = citySearch.slice(0,5)
+        }
+        let printSearch = '';
+        citySearch.forEach((city)=>{
+            printSearch += `<li><button>${city}</button></li>`
+        })
+        searchHistory.classList.remove('hide');
+        historyUl.innerHTML = printSearch;
+    }
+}
