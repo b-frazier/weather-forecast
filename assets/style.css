@@ -17,6 +17,7 @@ header {
 #search-container {
     border: 2px solid black;
     padding: 10px;
+    height: fit-content;
 }
 
 #search-bar {
@@ -34,7 +35,6 @@ header {
 }
 
 #search-history {
-    background-color: grey;
     padding: 8px;
 }
 
