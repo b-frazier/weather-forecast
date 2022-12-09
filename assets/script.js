@@ -16,7 +16,7 @@ searchBtn.addEventListener('click', function() {
 
 // converts city name to coordinates then gets weather data
 function getCityLocation(city) {
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=2&appid=' + key)
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=2&appid=' + key)
         .then(response => response.json())
         .then(data => {
             let lat = data[0].lat;
@@ -59,7 +59,7 @@ function getCityLocation(city) {
 
 
 function getCurrentWeather(city){
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=2&appid=' + key)
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=2&appid=' + key)
         .then(response => response.json())
         .then(data => {
             let lat = data[0].lat;
@@ -99,10 +99,10 @@ function getCurrentWeather(city){
 
 // take coordinates, output weather
 function getWeather(lat, lon) {
-    return fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
+    return fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
 };
 function findCurrentWeather(lat, lon) {
-    return fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
+    return fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=imperial')
 };
 
 function saveSearch(city){
