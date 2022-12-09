@@ -124,7 +124,7 @@ function showHistory(){
         }
         let printSearch = '';
         citySearch.forEach(function (city){
-            printSearch += `<li><button onclick="resetWeather('${city}')">${city}</button></li>`
+            printSearch += `<li><button class="historyBtn" onclick="resetWeather('${city}')">${city}</button></li>`
         })
         searchHistory.classList.remove('hide');
         historyUl.innerHTML = printSearch;

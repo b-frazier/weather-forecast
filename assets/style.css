@@ -3,6 +3,8 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    background-color: #7389c9;
+    color: #001f3f;
 }
 
 header {
@@ -11,17 +13,17 @@ header {
 }
 
 .main-content {
-    margin: 0 20px;
+    padding: 0 35px;
 }
 
 #search-container {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     padding: 10px;
     height: fit-content;
 }
 
 #search-bar {
-    margin: 3px 0;
+    margin: 15px 0 20px 0;
     width: 100%;
 }
 
@@ -32,6 +34,9 @@ header {
     text-align: center;
     justify-content: center;
     font-size: 20px;
+    background-color: #7389c9;
+    border-radius: 50px;
+    box-shadow: 25px 25px 51px #6274ab, -25 -25 51px #849ee7;
 }
 
 #search-history {
@@ -47,9 +52,15 @@ header {
     padding: 0;
 }
 
-#historyBtn {
+.historyBtn {
     width: 100%;
     text-align: center;
     justify-content: center;
     font-size: 18px;
+    margin: 8px 0;
+    border-radius: 10px;
+}
+
+.forecast-container {
+    margin-left: 15px;
 }
