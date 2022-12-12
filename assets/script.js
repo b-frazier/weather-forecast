@@ -27,6 +27,7 @@ function getCityLocation(city) {
         .then(forecast => {
             console.log(forecast)
             // forecast names the output, then we use forecast to access the data
+            empty(forecastDiv)
             for (let i = 0; i < forecast.list.length; i++) {
                 if (forecast.list[i].dt_txt.includes('12:00:00')) {
                     let dailyData = forecast.list[i];
@@ -69,6 +70,7 @@ function getCurrentWeather(city) {
         .then(response => response.json())
         .then(current => {
             console.log(current)
+            empty(currentForecast)
             let currentTemp = current.list[0].main.temp;
             let currentHumid = current.list[0].main.humidity;
             let currentWind = current.list[0].wind.speed;
@@ -130,6 +132,12 @@ function showHistory() {
         historyUl.innerHTML = printSearch;
     }
 };
+
+function empty(element){
+    while(element.firstChild){
+        element.removeChild(element.firstChild);
+    }
+}
 
 function resetWeather(e) {
     searchBar.value = e;
